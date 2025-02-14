@@ -19,12 +19,23 @@ public class AnimalCreator implements ICreator<Animal> {
 		species = species.toLowerCase();
 		String name = (String) args[1];
 		int food = (Integer) args[2];
+		if (food < 0) {
+			return null;
+		}
 		
 		switch (species) {
 		case "monkey":
-			return new Monkey(idManager.getNext(), name, food, (Integer) args[3]);
+			Integer friendship = (Integer) args[3];
+			if (friendship < 0 || friendship > 10) {
+                return null;
+			}
+			return new Monkey(idManager.getNext(), name, food, friendship);
 		case "rabbit":
-			return new Rabbit(idManager.getNext(), name, food, (Integer) args[3]);
+			friendship = (Integer) args[3];
+			if (friendship < 0 || friendship > 10) {
+                return null;
+			}
+			return new Rabbit(idManager.getNext(), name, food, friendship);
 		case "wolf":
 			return new Wolf(idManager.getNext(), name, food);
 		case "tiger":
