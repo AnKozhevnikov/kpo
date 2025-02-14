@@ -64,3 +64,4 @@ java -jar zoo-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 Внедрение зависимостей отдано фреймворку Spring, который, например в класс ZooCreator внедряет зависимость IdManager, а в зоопарк внедряется ветклиника.
 
+![title](images/meme.jpeg)
