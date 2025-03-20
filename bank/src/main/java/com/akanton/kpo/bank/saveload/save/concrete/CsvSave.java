@@ -37,6 +37,7 @@ public class CsvSave implements ISave {
                         writer.write(",");
                     }
                 }
+                writer.write("\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
