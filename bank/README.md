@@ -31,3 +31,4 @@
 mvn clean package
 java -jar target/bank-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
+![title](images/meme.jpg)
