@@ -52,7 +52,7 @@ public class FeedingSchedule {
         return amount;
     }
 
-    public Date getLastFed() { return lastFed; }
+    public OffsetDateTime getLastFed() { return lastFed; }
 
     public void setId(int id) {
         this.id = id;
