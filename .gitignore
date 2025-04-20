@@ -22,3 +22,15 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+
+### Idea ###
+
+.idea/
+*.iws
+*.iml
+*.ipr
+*.bak
+*.orig
+.idea_modules/
+out/
+
