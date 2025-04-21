@@ -28,6 +28,8 @@ public class FeedingSchedule {
         this.animalId = animalId;
         this.foodId = foodId;
         this.feedingTime = feedingTime;
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
         this.amount = amount;
         this.lastFed = null;
     }
@@ -69,6 +71,8 @@ public class FeedingSchedule {
     public void setFeedingTime(LocalTime feedingTime) { this.feedingTime = feedingTime; }
 
     public void setAmount(int amount) {
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
         this.amount = amount;
     }
 
@@ -79,6 +83,8 @@ public class FeedingSchedule {
     }
 
     public void changeAmount(int newAmount) {
+        if (newAmount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
         this.amount = newAmount;
     }
 

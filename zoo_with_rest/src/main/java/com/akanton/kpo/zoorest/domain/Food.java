@@ -19,6 +19,8 @@ public class Food {
 
     public Food(String name, int amount) {
         this.name = name;
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
         this.amount = amount;
     }
 
@@ -43,6 +45,8 @@ public class Food {
     }
 
     public void setAmount(int amount) {
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
         this.amount = amount;
     }
 }
