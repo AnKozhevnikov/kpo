@@ -15,5 +15,6 @@ public class EnclosureService implements IEnclosureService {
         Enclosure enclosure = enclosureRepository.findById(enclosureId)
                 .orElseThrow(() -> new RuntimeException("Enclosure not found"));
         enclosure.clean();
+        enclosureRepository.save(enclosure);
     }
 }
