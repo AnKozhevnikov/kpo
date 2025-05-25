@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: false
+            maxAge: 3600
+      routes:
+        - id: storing-service
+          uri: http://storing-service:8080
+          predicates:
+            - Path=/storing-service/**
+          filters:
+            - StripPrefix=1
+
+        - id: analytics-service
+          uri: http://analytics-service:8080
+          predicates:
+            - Path=/analytics-service/**
+          filters:
+            - StripPrefix=1
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    root: ERROR
+    com.anton.kpo: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Storing Service
+        url: /storing-service/v3/api-docs
+      - name: Analytics Service
+        url: /analytics-service/v3/api-docs
+    disable-swagger-default-url: true
