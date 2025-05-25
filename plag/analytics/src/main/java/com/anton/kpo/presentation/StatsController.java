@@ -1,6 +1,5 @@
 package com.anton.kpo.presentation;
 
-import com.anton.kpo.application.services.interfaces.IDetectDuplicationService;
 import com.anton.kpo.application.services.interfaces.IStatsService;
 import com.anton.kpo.application.services.interfaces.IStorageService;
 import com.anton.kpo.domain.AnalysisInfo;
@@ -24,9 +23,6 @@ import java.util.UUID;
 public class StatsController {
     @Autowired
     private IStatsService statsService;
-
-    @Autowired
-    private IDetectDuplicationService detectDuplicationService;
 
     @Autowired
     private IStorageService storageService;
