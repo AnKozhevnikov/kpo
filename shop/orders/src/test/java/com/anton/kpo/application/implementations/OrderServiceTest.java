@@ -1,7 +1,6 @@
 package com.anton.kpo.application.implementations;
 
 import com.anton.kpo.domain.Order;
-import com.anton.kpo.domain.OrderPaymentMessage;
 import com.anton.kpo.domain.OrderStatus;
 import com.anton.kpo.infrastructure.repositories.OrderOutbox;
 import com.anton.kpo.infrastructure.repositories.OrderRepository;
