@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: false
+            maxAge: 3600
+      routes:
+        - id: payments-service
+          uri: http://payments-service:8080
+          predicates:
+            - Path=/payments-service/**
+          filters:
+            - StripPrefix=1
+
+        - id: orders-service
+          uri: http://orders-service:8080
+          predicates:
+            - Path=/orders-service/**
+          filters:
+            - StripPrefix=1
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    root: ERROR
+    com.anton.kpo: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Payments Service
+        url: /payments-service/v3/api-docs
+      - name: Orders Service
+        url: /orders-service/v3/api-docs
+    disable-swagger-default-url: true
